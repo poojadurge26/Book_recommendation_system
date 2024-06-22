@@ -13,9 +13,6 @@ ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
 
-st.text(books_df.shape)
-
-
 ratings_train_df, ratings_test_df = train_test_split(ratings_full_df,
                                    stratify=ratings_full_df['User-ID'],
                                    test_size=0.20,
@@ -110,10 +107,33 @@ class ModelRecommender:
             person_interacted_items_testset = set([int(interacted_values_testset['ISBN'])])
 
         interacted_items_count_testset = len(person_interacted_items_testset)
-        st.text(person_id)
+        
         # Getting a ranked recommendation list from the model for a given user
         person_recs_df = model.recommend_items(person_id, items_to_ignore=get_items_interacted(person_id, ratings_train_indexed_df),topn=10000000000)
 
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+        st.text(person_recs_df.iloc[0]['Book-Title'])
+        st.text(person_recs_df.iloc[0]['Image-URL-M'])
+       
+        with col2:
+        st.text(person_recs_df.iloc[1]['Book-Title'])
+        st.text(person_recs_df.iloc[1]['Image-URL-M'])
+
+        with col3:
+        st.text(person_recs_df.iloc[2]['Book-Title'])
+        st.text(person_recs_df.iloc[2]['Image-URL-M'])
+      
+        with col4:
+        st.text(person_recs_df.iloc[3]['Book-Title'])
+        st.text(person_recs_df.iloc[3]['Image-URL-M'])
+     
+        with col5:
+        st.text(person_recs_df.iloc[4]['Book-Title'])
+        st.text(person_recs_df.iloc[4]['Image-URL-M'])
+  
+
+  
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
 
@@ -130,28 +150,8 @@ selected_user = st.selectbox(
 
 if st.button('Show Recommendation'):
     model_recommender.recommend_book(cf_recommender_model,selected_user)
-    recommended_books = recommendations_df.head(5)
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.text(recommended_books.iloc[0]['Book-Title'])
-        st.text(recommended_books.iloc[0]['Image-URL-M'])
-       
-    with col2:
-        st.text(recommended_books.iloc[1]['Book-Title'])
-        st.text(recommended_books.iloc[1]['Image-URL-M'])
-
-    with col3:
-        st.text(recommended_books.iloc[2]['Book-Title'])
-        st.text(recommended_books.iloc[2]['Image-URL-M'])
-      
-    with col4:
-        st.text(recommended_books.iloc[3]['Book-Title'])
-        st.text(recommended_books.iloc[3]['Image-URL-M'])
-     
-    with col5:
-        st.text(recommended_books.iloc[4]['Book-Title'])
-        st.text(recommended_books.iloc[4]['Image-URL-M'])
-  
+   
+   
 
     
         
