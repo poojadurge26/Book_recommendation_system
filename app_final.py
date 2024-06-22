@@ -114,8 +114,8 @@ class ModelRecommender:
         person_recs_df = model.recommend_items(person_id, items_to_ignore=get_items_interacted(person_id, ratings_train_indexed_df),topn=10000000000)
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
-          st.text(person_recs_df.iloc[[0]['Book-Title']])
-          st.text(person_recs_df.iloc[[0]['Image-URL-M']])
+          st.text(person_recs_df.iloc[0]['Book-Title'])
+          st.text(person_recs_df.iloc[0]['Image-URL-M'])
        
         with col2:
           st.text(person_recs_df.iloc[[1]['Book-Title']])
