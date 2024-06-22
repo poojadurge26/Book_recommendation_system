@@ -112,7 +112,26 @@ class ModelRecommender:
         
         # Getting a ranked recommendation list from the model for a given user
         person_recs_df = model.recommend_items(person_id, items_to_ignore=get_items_interacted(person_id, ratings_train_indexed_df),topn=10000000000)
-        display_recommended_books(person_recs_df.head(5))
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+        st.text(recommended_books.iloc[[0]['Book-Title']])
+        st.text(recommended_books.iloc[[0]['Image-URL-M']])
+       
+        with col2:
+        st.text(recommended_books.iloc[[1]['Book-Title']])
+        st.text(recommended_books.iloc[[1]['Image-URL-M']])
+
+        with col3:
+        st.text(recommended_books.iloc[[2]['Book-Title']])
+        st.text(recommended_books.iloc[[2]['Image-URL-M']])
+      
+        with col4:
+        st.text(recommended_books.iloc[[3]['Book-Title']])
+        st.text(recommended_books.iloc[[3]['Image-URL-M']])
+     
+        with col5:
+        st.text(recommended_books.iloc[[4]['Book-Title']])
+        st.text(recommended_books.iloc[[4]['Image-URL-M']]))
   
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
@@ -131,29 +150,8 @@ selected_user = st.selectbox(
 if st.button('Show Recommendation'):
     model_recommender.recommend_book(cf_recommender_model,selected_user)
 
-def display_recommended_books(recommended_books):
 
-    st.dataframe(recommended_books)
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.text(recommended_books.iloc[[0]['Book-Title']])
-        st.text(recommended_books.iloc[[0]['Image-URL-M']])
-       
-    with col2:
-        st.text(recommended_books.iloc[[1]['Book-Title']])
-        st.text(recommended_books.iloc[[1]['Image-URL-M']])
-
-    with col3:
-        st.text(recommended_books.iloc[[2]['Book-Title']])
-        st.text(recommended_books.iloc[[2]['Image-URL-M']])
-      
-    with col4:
-        st.text(recommended_books.iloc[[3]['Book-Title']])
-        st.text(recommended_books.iloc[[3]['Image-URL-M']])
-     
-    with col5:
-        st.text(recommended_books.iloc[[4]['Book-Title']])
-        st.text(recommended_books.iloc[[4]['Image-URL-M']])
+    
 
    
    
