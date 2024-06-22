@@ -62,7 +62,7 @@ class CFRecommender:
         recommendations_df = sorted_user_predictions[~sorted_user_predictions['ISBN'].isin(items_to_ignore)].sort_values('recStrength', ascending = False).head(topn)
         recommendations_df=recommendations_df.merge(books_df,on='ISBN',how='inner')
         recommendations_df=recommendations_df[['ISBN','Book-Title','Image-URL-M','recStrength']]
-        st.dataframe(recommended_books)
+        st.dataframe(recommendations_df)
         return recommendations_df
 
 
