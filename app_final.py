@@ -62,7 +62,7 @@ class CFRecommender:
         recommendations_df = sorted_user_predictions[~sorted_user_predictions['ISBN'].isin(items_to_ignore)].sort_values('recStrength', ascending = False).head(topn)
         recommendations_df=recommendations_df.merge(books_df,on='ISBN',how='inner')
         recommendations_df=recommendations_df[['ISBN','Book-Title','Image-URL-M','recStrength']]
-        st.dataframe(recommendations_df)
+        
         return recommendations_df
 
 
@@ -129,8 +129,28 @@ selected_user = st.selectbox(
 )
 
 if st.button('Show Recommendation'):
-    recommended_books = model_recommender.recommend_book(cf_recommender_model,selected_user)
+    model_recommender.recommend_book(cf_recommender_model,selected_user)
+    recommended_books = recommendations_df.head(5)
     col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        st.text(recommended_books.iloc[0]['Book-Title'])
+        st.text(recommended_books.iloc[0]['Image-URL-M'])
+       
+    with col2:
+        st.text(recommended_books.iloc[1]['Book-Title'])
+        st.text(recommended_books.iloc[1]['Image-URL-M'])
+
+    with col3:
+        st.text(recommended_books.iloc[2]['Book-Title'])
+        st.text(recommended_books.iloc[2]['Image-URL-M'])
+      
+    with col4:
+        st.text(recommended_books.iloc[3]['Book-Title'])
+        st.text(recommended_books.iloc[3]['Image-URL-M'])
+     
+    with col5:
+        st.text(recommended_books.iloc[4]['Book-Title'])
+        st.text(recommended_books.iloc[4]['Image-URL-M'])
   
 
     
