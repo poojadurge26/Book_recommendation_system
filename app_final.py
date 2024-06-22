@@ -12,7 +12,8 @@ user_ids = pickle.load(open('user_ids_list.pkl','rb'))
 ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
-global recommended_books = pd.DataFrame()
+recommended_books = pd.DataFrame()
+
 ratings_train_df, ratings_test_df = train_test_split(ratings_full_df,
                                    stratify=ratings_full_df['User-ID'],
                                    test_size=0.20,
@@ -60,7 +61,7 @@ class CFRecommender:
         recommendations_df=recommendations_df.merge(books_df,on='ISBN',how='inner')
         recommendations_df=recommendations_df[['ISBN','Book-Title','Image-URL-M','recStrength']]
         recommended_books = recommendations_df.head(5)
-        st.dataframe(recommended_books)
+      
         return recommendations_df
 
 
@@ -111,7 +112,7 @@ class ModelRecommender:
         
         # Getting a ranked recommendation list from the model for a given user
         person_recs_df = model.recommend_items(person_id, items_to_ignore=get_items_interacted(person_id, ratings_train_indexed_df),topn=10000000000)
-
+        display_recommended_books(person_recs_df.head(5))
   
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
@@ -129,6 +130,9 @@ selected_user = st.selectbox(
 
 if st.button('Show Recommendation'):
     model_recommender.recommend_book(cf_recommender_model,selected_user)
+
+def display_recommended_books(recommended_books):
+
     st.dataframe(recommended_books)
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
