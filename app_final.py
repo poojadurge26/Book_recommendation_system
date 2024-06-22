@@ -131,7 +131,7 @@ class ModelRecommender:
      
         with col5:
         st.text(recommended_books.iloc[[4]['Book-Title']])
-        st.text(recommended_books.iloc[[4]['Image-URL-M']]))
+        st.text(recommended_books.iloc[[4]['Image-URL-M']])
   
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
