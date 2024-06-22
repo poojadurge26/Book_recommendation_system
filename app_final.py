@@ -8,9 +8,7 @@ from scipy.sparse.linalg import svds
 
 
 st.header('Book Recommender System')
-cf_recommender_model = pickle.load(open('cf_recommender_model.pkl','rb'))
 user_ids = pickle.load(open('user_ids_list.pkl','rb'))
-model_recommender = pickle.load(open('model_recommender.pkl','rb'))
 ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
