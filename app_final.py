@@ -60,6 +60,7 @@ class CFRecommender:
         recommendations_df=recommendations_df.merge(books_df,on='ISBN',how='inner')
         recommendations_df=recommendations_df[['ISBN','Book-Title','Image-URL-M','recStrength']]
         recommended_books = recommendations_df.head(5)
+        st.dataframe(recommended_books)
         return recommendations_df
 
 
