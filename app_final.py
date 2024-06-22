@@ -13,7 +13,7 @@ ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
 
-st.dataframe(books_df)
+st.text(books_df.shape)
 
 
 ratings_train_df, ratings_test_df = train_test_split(ratings_full_df,
@@ -62,7 +62,7 @@ class CFRecommender:
         recommendations_df = sorted_user_predictions[~sorted_user_predictions['ISBN'].isin(items_to_ignore)].sort_values('recStrength', ascending = False).head(topn)
         recommendations_df=recommendations_df.merge(books_df,on='ISBN',how='inner')
         recommendations_df=recommendations_df[['ISBN','Book-Title','Image-URL-M','recStrength']]
-
+        
         return recommendations_df
 
 
@@ -110,10 +110,10 @@ class ModelRecommender:
             person_interacted_items_testset = set([int(interacted_values_testset['ISBN'])])
 
         interacted_items_count_testset = len(person_interacted_items_testset)
-
+        st.text(person_id)
         # Getting a ranked recommendation list from the model for a given user
         person_recs_df = model.recommend_items(person_id, items_to_ignore=get_items_interacted(person_id, ratings_train_indexed_df),topn=10000000000)
-     
+        st.dataframe(person_recs_df)
 
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
@@ -125,7 +125,7 @@ model_recommender = ModelRecommender()
 
 
 selected_user = st.selectbox(
-    "Type or select a book from the dropdown",
+    " Select a User-Id from the dropdown",
     user_ids
 )
 
