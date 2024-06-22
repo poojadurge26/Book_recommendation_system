@@ -13,7 +13,7 @@ ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
 
-st.dataframe(ratings_full_df)
+st.dataframe(books_df)
 
 
 ratings_train_df, ratings_test_df = train_test_split(ratings_full_df,
