@@ -115,23 +115,23 @@ class ModelRecommender:
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
           st.text(person_recs_df.iloc[0]['Book-Title'])
-          st.text(person_recs_df.iloc[0]['Image-URL-M'])
+          st.image(person_recs_df.iloc[0]['Image-URL-M'])
        
         with col2:
-          st.text(person_recs_df.iloc[[1]['Book-Title']])
-          st.text(person_recs_df.iloc[[1]['Image-URL-M']])
+          st.text(person_recs_df.iloc[1]['Book-Title'])
+          st.image(person_recs_df.iloc[1]['Image-URL-M'])
 
         with col3:
-          st.text(person_recs_df.iloc[[2]['Book-Title']])
-          st.text(person_recs_df.iloc[[2]['Image-URL-M']])
+          st.text(person_recs_df.iloc[2]['Book-Title'])
+          st.image(person_recs_df.iloc[2]['Image-URL-M'])
       
         with col4:
-          st.text(person_recs_df.iloc[[3]['Book-Title']])
-          st.text(person_recs_df.iloc[[3]['Image-URL-M']])
+          st.text(person_recs_df.iloc[3]['Book-Title'])
+          st.image(person_recs_df.iloc[3]['Image-URL-M'])
      
         with col5:
-          st.text(person_recs_df.iloc[[4]['Book-Title']])
-          st.text(person_recs_df.iloc[[4]['Image-URL-M']])
+          st.text(person_recs_df.iloc[4]['Book-Title'])
+          st.image(person_recs_df.iloc[4]['Image-URL-M'])
   
         # Function to evaluate the performance of model at overall level
     def recommend_book(self, model ,userid):
