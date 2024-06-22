@@ -129,7 +129,7 @@ selected_user = st.selectbox(
 if st.button('Show Recommendation'):
     model_recommender.recommend_book(cf_recommender_model,selected_user)
   
-   col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         st.text(recommended_books.iloc[0]['Book-Title'])
         st.text(recommended_books.iloc[0]['Image-URL-M'])
@@ -149,6 +149,7 @@ if st.button('Show Recommendation'):
     with col5:
         st.text(recommended_books.iloc[4]['Book-Title'])
         st.text(recommended_books.iloc[4]['Image-URL-M'])
+
    
    
 
