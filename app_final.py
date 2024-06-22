@@ -26,6 +26,8 @@ users_items_pivot_matrix_df = ratings_train_df.pivot(index='User-ID',
                                                           values='Book-Rating').fillna(0)
 
 users_items_pivot_matrix = users_items_pivot_matrix_df.values
+users_ids_list = list(users_items_pivot_matrix_df.index)
+
 
 # The number of factors to factor the user-item matrix.
 NUMBER_OF_FACTORS_MF = 15
@@ -37,7 +39,7 @@ sigma = np.diag(sigma)
 
 all_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt)
 
-cf_preds_df = pd.DataFrame(all_user_predicted_ratings, columns = users_items_pivot_matrix_df.columns, index=users_ids).transpose()
+cf_preds_df = pd.DataFrame(all_user_predicted_ratings, columns = users_items_pivot_matrix_df.columns, index=users_ids_list).transpose()
 
 
 class CFRecommender:
