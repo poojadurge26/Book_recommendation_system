@@ -12,7 +12,7 @@ user_ids = pickle.load(open('user_ids_list.pkl','rb'))
 ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
 
-st.dataframe(books_df)
+
 st.dataframe(ratings_full_df)
 
 
