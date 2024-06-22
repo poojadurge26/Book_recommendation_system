@@ -1,17 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 20 23:52:38 2024
-
-@author: Kajal
-"""
-
 import pickle
 import streamlit as st
 import numpy as np
 import pandas as pd
 import math
 from sklearn.model_selection import train_test_split
-from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse.linalg import svds
 
 
