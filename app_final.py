@@ -128,7 +128,7 @@ selected_user = st.selectbox(
 )
 
 if st.button('Show Recommendation'):
-    recommended_books = model_recommender.recommend_book(cf_recommender_model,user)
+    recommended_books = model_recommender.recommend_book(cf_recommender_model,selected_user)
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         st.text(recommended_books.iloc[0]['Book-Title'])
