@@ -5,19 +5,29 @@ import pandas as pd
 import math
 from sklearn.model_selection import train_test_split
 from scipy.sparse.linalg import svds
+import base64
 
+main_bg = "bg.jpg"
+main_bg_ext = "jpg"
 
-st.header('Book Recommender System')
+side_bg = "bg.jpg"
+side_bg_ext = "jpg"
+
 st.markdown(
-    """
+    f"""
     <style>
-    .reportview-container {
-        background: url("bg.jpg")
-    }
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+   .sidebar .sidebar-content {{
+        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
     </style>
     """,
     unsafe_allow_html=True
 )
+st.header('Book Recommender System')
+
 user_ids = pickle.load(open('user_ids_list.pkl','rb'))
 ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
