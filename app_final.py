@@ -147,7 +147,7 @@ selected_user = st.selectbox(
     user_ids
 )
 
-if st.button('Show Recommendation'):
+if st.button('Show Recommendations'):
     model_recommender.recommend_book(cf_recommender_model,selected_user)
 
 
