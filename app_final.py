@@ -8,6 +8,16 @@ from scipy.sparse.linalg import svds
 
 
 st.header('Book Recommender System')
+ st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("bg.jpg")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 user_ids = pickle.load(open('user_ids_list.pkl','rb'))
 ratings_full_df = pickle.load(open('ratings_full_df.pkl','rb'))
 books_df = pickle.load(open('books_df.pkl','rb'))
