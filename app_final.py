@@ -7,22 +7,7 @@ from sklearn.model_selection import train_test_split
 from scipy.sparse.linalg import svds
 import base64
 
-main_bg = "bg.jpg"
-main_bg_ext = "jpg"
 
-side_bg = "bg.jpg"
-side_bg_ext = "jpg"
-
-st.markdown(
-    f"""
-    <style>
-    body {{
-        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 st.header('Book Recommender System')
 
 user_ids = pickle.load(open('user_ids_list.pkl','rb'))
